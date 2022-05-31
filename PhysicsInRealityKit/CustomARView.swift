@@ -82,10 +82,10 @@ class CustomARView: ARView {
         sphere.position = [.random(in: -minMax...minMax), radius / 2, .random(in: -minMax...minMax)]
         let shape = ShapeResource.generateSphere(radius: radius)
         let collisionFilter = CollisionFilter(group: sphereCollisionGroup, mask: .all)
-        sphere.collision = .init(shapes: [shape], mode: .default, filter: collisionFilter)
+        sphere.collision = CollisionComponent(shapes: [shape], mode: .default, filter: collisionFilter)
         let massProperties = PhysicsMassProperties(shape: shape, mass: 0.005)
         let physicsMaterial = PhysicsMaterialResource.generate(friction: 0.8, restitution: 0.8)
-        sphere.physicsBody = .init(massProperties: massProperties, material: physicsMaterial, mode: .dynamic)
+        sphere.physicsBody = PhysicsBodyComponent(massProperties: massProperties, material: physicsMaterial, mode: .dynamic)
         return sphere
     }
     
@@ -95,10 +95,10 @@ class CustomARView: ARView {
         box.position = [.random(in: -minMax.x...minMax.x), size.y / 2, .random(in: -minMax.y...minMax.y)]
         let shape = ShapeResource.generateBox(size: size)
         let collisionFilter = CollisionFilter(group: boxCollisionGroup, mask: .all)
-        box.collision = .init(shapes: [shape], mode: .default, filter: collisionFilter)
+        box.collision = CollisionComponent(shapes: [shape], mode: .default, filter: collisionFilter)
         let massProperties = PhysicsMassProperties(shape: shape, mass: 0.005)
         let physicsMaterial = PhysicsMaterialResource.generate(friction: 0.8, restitution: 0.8)
-        box.physicsBody = .init(massProperties: massProperties, material: physicsMaterial, mode: .dynamic)
+        box.physicsBody = PhysicsBodyComponent(massProperties: massProperties, material: physicsMaterial, mode: .dynamic)
         return box
     }
     
