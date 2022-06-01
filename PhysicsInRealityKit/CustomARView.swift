@@ -111,7 +111,8 @@ class CustomARView: ARView {
     }
     
     private func randomVector(length: Float) -> simd_float3 {
-        return [cos(.random(in: -.pi...(.pi))), 0, sin(.random(in: -.pi...(.pi)))] * length
+        let angle = Float.random(in: -.pi...(.pi))
+        return [cos(angle), 0, sin(angle)] * length
     }
     
     private func addCoaching() {
